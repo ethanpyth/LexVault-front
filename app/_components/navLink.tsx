@@ -4,7 +4,7 @@ type navLinkProps = {
   href: string,
   label: string,
   icon: SvgIconComponent,
-  isActive: bool
+  isActive: boolean
 }
 
 export default function NavLink({ navLink }: { navLink: navLinkProps }) {
