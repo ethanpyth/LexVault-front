@@ -1,5 +1,5 @@
 type StatusProps = {
-  status: "operationnel" | "maintenance" | "partial" | "major";
+  status: string;
   infrastructure: string;
 }
 
