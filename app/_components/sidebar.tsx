@@ -1,4 +1,4 @@
-import { DashboardOutlined, SearchOutlined, NoteAddOutlined, HistoryEduOutlined, VerifiedUserOutlined, SettingsOutlined } from "@mui/icons-material";
+import { DashboardOutlined, SearchOutlined, NoteAddOutlined, HistoryEduOutlined, VerifiedUserOutlined, SettingsOutlined, LockOutlined } from "@mui/icons-material";
 import NavLink from "./navLink";
 
 const navLinks = [
@@ -6,25 +6,25 @@ const navLinks = [
     href: "./dashboard",
     label: "Table de bord",
     icon: DashboardOutlined,
-    isActive: true,
+    isActive: false,
   },
   {
     href: "./folder/search",
     label: "Recherche Dossier",
     icon: SearchOutlined,
-    isActive: true,
+    isActive: false,
   },
   {
     href: "./folder/new",
     label: "Nouvel Enregistrement",
     icon: NoteAddOutlined,
-    isActive: true,
+    isActive: false,
   },
   {
     href: "./history",
     label: "Journal d'audit",
     icon: HistoryEduOutlined,
-    isActive: true,
+    isActive: false,
   },
 ]
 
@@ -33,19 +33,19 @@ const adminNavLinks = [
     href: "./admin/permissions",
     label: "Habilitations",
     icon: VerifiedUserOutlined,
-    isActive: true,
+    isActive: false,
   },
   {
     href: "./admin/settings",
     label: "Paramètres",
     icon: SettingsOutlined,
-    isActive: true,
+    isActive: false,
   }
 ]
 
 export default function Sidebar() {
   return (
-    <aside className="w-72 flex flex-col bg-surface border-r border-outline-variant">
+    <aside className="w-72 flex flex-col bg-white border-r border-outline-variant">
       <div className="p-6 border-b border-outline-variant"></div>
       <nav className="flex-1 px-4 py-6 space-y-1">
         {navLinks.map((navLink, index) => (
@@ -56,7 +56,21 @@ export default function Sidebar() {
           <NavLink navLink={navLink} key={index}/>
         ))}
       </nav>
-      <div></div>
+      <div className="p-4 bg-surface-container-highest/50 m-4 rounded border border-outline-variant">
+        <div className="text-[11px] text-on-surface-variant leading-relaxed">
+          <span className="material-symbols-outlined text-primary text-sm">
+            <LockOutlined />
+          </span>
+          <span className="text-[10px] font-bold uppercase text-on-surface-variant">
+            Session Sécurisée
+          </span>
+        </div>
+        <p className="text-[11px] text-on-surface-variant leading-relaxed">
+          Dernière connection
+          <br/>
+          12 octobre 2026
+        </p>
+      </div>
     </aside>
   )
 }
