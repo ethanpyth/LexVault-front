@@ -1,5 +1,8 @@
+import GuidanceAlert from "../guidance-alerts"
+
 export default function IdentityForm() {
   return (
+    <>
     <div className="">
       <div className="bg-surface-lowest border-outline-variant shadow-sm rounded-lg overflow-hidden">
         <div className="bg-surface-low px-6 py-4 border-b border-outline-variant">
@@ -75,6 +78,8 @@ export default function IdentityForm() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      <GuidanceAlert />
+    </>
   )
 }

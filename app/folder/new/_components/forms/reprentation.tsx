@@ -1,7 +1,7 @@
-import InfoRecordForm from "./_components/sections/info-record"
-import InfractionForm from "./_components/sections/infraction"
-import InformationalIllustration from "./_components/info-illustration"
-import NavigationFooter from "./_components/navigation-footer"
+import InfoRecordForm from "../sections/info-record"
+import InfractionForm from "../sections/infraction"
+import InformationalIllustration from "../info-illustration"
+import NavigationFooter from "../navigation-footer"
 import { createRepresentation } from "@/app/lib/folder/representation/action"
 
 export default function Page() {

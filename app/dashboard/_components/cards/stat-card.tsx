@@ -7,7 +7,7 @@ type CardProps = {
     icon: React.ReactNode;
 }
 
-export default function Card({ title, value, info, icon }: CardProps) {
+export default function Card({ title, value, info, icon }: Readonly<CardProps>) {
   return (
     <div className="bg-surface p-6 rounded border border-outline-variant shadow-sm flex flex-col justify-between">
       <div className="flex justify-between items-start">

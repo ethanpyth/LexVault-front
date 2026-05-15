@@ -1,14 +1,57 @@
+'use client'
+
 import IdentityForm from "./_components/forms/identity";
-import GuidanceAlert from "./_components/guidance-alerts";
 import Action from "./_components/actions";
+import ProgressHeader from "./_components/progress-header"
 import { createRecord } from "@/app/lib/folder/record/action";
 
-export default function Page() {
+type PageProps = {
+  searchParams?: Promise<{
+    stepNumber: number;
+    stepLabel: string;
+  }>;
+};
+
+const formsHeader = {
+  "identity" : {
+    title: "Identification du condamné",
+    description: "Veuillez saisir les informations d'identité officielles telles qu'elles figurent dans les registres d'état civil.",
+    number: 1,
+  },
+  "record" : {
+    title: "Détails de la décision",
+    description: "Caractéristiques de la condamnation",
+    number: 2,
+  },
+  "attachments" : {
+    title: "Pièces jointes",
+    description: "Veuillez founir les documents justificatifs nécessaires à l'instruction de votre dossier judiciaire.",
+    number: 3,
+  },
+  "payments" : {
+    title: "Reglements des frais de dossiers",
+    description: "Veuillez vérifier le récapitulatif des frais administratifs et choisir votre mode de paiement pour finaliser l'enregistrement",
+    number: 4,
+  },
+  "confirmation" : {
+    title: "Validation et signature electronique",
+    description: "Veuillez saisir les informations d'identité officielles telles qu'elles figurent dans les registres d'état civil.",
+    number: 5,
+  },
+}
+
+export default function Page({ searchParams }:  Readonly<PageProps> ) {
+  const resolvedParams = searchParams || {stepNumber: 1, stepLabel: "identity"}
+  const stepLabel = resolvedParams.stepLabel || ""
+  const formHeader = formsHeader[stepLabel] || formsHeader["identity"]
   return (
-    <form action={createRecord} method="POST">
-      <IdentityForm />
-      <GuidanceAlert />
-      <Action />
-    </form>
+    <>
+      <ProgressHeader progressHeader={formHeader} />
+      <form action={createRecord} method="POST">
+        <IdentityForm />
+        <Action />
+      </form>
+    </>
+    
   )
 }
