@@ -14,14 +14,13 @@ export default function InfoRecordForm() {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
         <div className="flex flex-col gap-2">
-          <label htmlFor="" className="font-label-capst text-label-caps text-on-surface-variant">
-            Type de peine
-            <span className="text-error">*</span>
+          <label htmlFor="type" className="font-label-capst text-label-caps text-on-surface-variant">
+            Type de peine<span className="text-error">*</span>
           </label>
           <select
             title="Choix du type de peine"
-            name=""
-            id=""
+            name="type"
+            id="type"
             className="w-full h-12 border border-outline px-4 font-body-md bg-white focus:border-primary focus:ring-primary focus:ring-1"
           >
             <option disabled defaultValue="Selectionnez le type de peine">Selectionnez le type de peine</option>
@@ -35,28 +34,28 @@ export default function InfoRecordForm() {
           </span>
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="" className="font-label-caps text-label-caps text-on-surface-variant">
-            Durée / montant
-            <span className="text-error">*</span>
+          <label htmlFor="time" className="font-label-caps text-label-caps text-on-surface-variant">
+            Durée / montant<span className="text-error">*</span>
           </label>
           <input
             title="Champ de la durée de la peine"
             type="text"
+            id="time"
             placeholder="Ex: 12 mois / 1500 €"
             className="w-full h-12 border border-outline px-4 font-body focus:border-primary focus:ring-1 focus:ring-primary"
           />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="" className="font-label-caps text-label-caps text-on-surface-variant">
-            Date de la décision
-            <span className="text-error">*</span>
+          <label htmlFor="date" className="font-label-caps text-label-caps text-on-surface-variant">
+            Date de la décision<span className="text-error">*</span>
           </label>
           <div className="relative">
             <input
-            title="Champ de la date de la décision judiciaire"
-            type="text"
-            placeholder="Ex: 12 mois / 1500 €"
-            className="w-full h-12 border border-outline px-4 font-body focus:border-primary focus:ring-1 focus:ring-primary"
+              title="Champ de la date de la décision judiciaire"
+              type="text"
+              id=""
+              placeholder="Ex: 12 mois / 1500 €"
+              className="w-full h-12 border border-outline px-4 font-body focus:border-primary focus:ring-1 focus:ring-primary"
             />
             <span className="absolute right-4 top-3 material-symbols-outlined text-outline pointer-events-none">
               <CalendarTodayOutlined />

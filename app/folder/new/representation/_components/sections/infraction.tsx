@@ -15,15 +15,14 @@ export default function InfractionForm() {
       <div className="flex flex-col gap-stack-md">
         <div className="flex flex-col gap-2">
           <label
-            htmlFor=""
+            htmlFor="description"
             className="font-label-caps text-label-caps text-on-surface-variant"
           >
-            Nature de l&apos;infraction
-            <span className="text-error">*</span>
+            Nature de l&apos;infraction<span className="text-error">*</span>
           </label>
           <textarea
-            name=""
-            id=""
+            name="description"
+            id="description"
             placeholder="Description détaillée des faits et de la qualification pénale..."
             rows={4}
             className="w-full border border-outline p-4 font-body-md focus:border-primary focus:ring-1 focus:ring-primary"
@@ -32,15 +31,15 @@ export default function InfractionForm() {
         </div>
         <div className="flex flex-col gap-2 max-w-md">
           <label
-            htmlFor=""
+            htmlFor="code"
             className="font-label-caps text-label-caps text-on-surface-variant"
           >
-            Code Pénal Réferent
-            <span className="text-error">*</span>
+            Code Pénal Réferent<span className="text-error">*</span>
           </label>
           <input
             title="Champ du code pénal"
-            id=""
+            id="code"
+            name="code"
             type="text"
             placeholder="Ex: Article 222-13"
             className="w-full h-12 border border-outline px-4 font-body-md focus-border-primary focus:ring-primary"

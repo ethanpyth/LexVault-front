@@ -15,8 +15,7 @@ export default function Action() {
         type="submit"
         className="px-8 py-3 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded-lg shadow-md hover:opacity-90 transition-all flex items-center"
       >
-        Suivant
-        <span className="material-symbols-outlined">
+        Suivant<span className="material-symbols-outlined">
           <ArrowForwardOutlined />
         </span>
       </button>

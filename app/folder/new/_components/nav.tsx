@@ -57,9 +57,9 @@ const navLinkSideBar = [
 export function Nav() {
   return (
     <nav className="hidden md:flex items-center gap-stack-md font-body-mb text-body-md ml-stack-lg">
-      {navLinks.map((navLink, index) =>  (
+      {navLinks.map((navLink) =>  (
         <a 
-          key={index}
+          key={navLink.label}
           href={navLink.href}
           className={`${navLink.isActive ? "text-primary border-b-2 border-primary font-bold pb-1 transition-all duration-200" : "text-on-surface-variant hover:text-primary transition-colors"}`}
         >
@@ -71,12 +71,10 @@ export function Nav() {
 }
 
 export function NavSidebar() {
-
-
   return (
     <nav className="flex flex-col">
-      {navLinkSideBar.map((navLink, index) => (
-        <NavLink key={index} navLink={navLink} />
+      {navLinkSideBar.map((navLink) => (
+        <NavLink key={navLink.label} navLink={navLink} />
       ))}
     </nav>
   )

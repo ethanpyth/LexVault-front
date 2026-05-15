@@ -10,8 +10,7 @@ export default function IdentityForm() {
         <div className="p-8 space-y-6">
           <div className="space-y-1.5">
             <label htmlFor="last_name" className="font-label-md text-label-md text-on-surface flex items-center gap-1">
-              Nom de famille
-              <span className="text-error">*</span>
+              Nom de famille<span className="text-error">*</span>
             </label>
             <input
               name="last_name"
@@ -22,9 +21,8 @@ export default function IdentityForm() {
             />
           </div>
           <div className="space-y-1.5">
-            <label htmlFor="last_name" className="font-label-md text-label-md text-on-surface flex items-center gap-1">
-              Prénom
-              <span className="text-error">*</span>
+            <label htmlFor="first_name" className="font-label-md text-label-md text-on-surface flex items-center gap-1">
+              Prénom<span className="text-error">*</span>
             </label>
             <input
               name="first_name"
@@ -37,8 +35,7 @@ export default function IdentityForm() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-1.5">
               <label htmlFor="dob" className="font-label-md text-label-md text-on-surface flex items-center gap-1">
-                Date de naissance
-                <span className="text-error">*</span>
+                Date de naissance<span className="text-error">*</span>
               </label>
               <input
                 name="dob"
@@ -50,8 +47,7 @@ export default function IdentityForm() {
             </div>
             <div className="space-y-1.5">
               <label htmlFor="pob" className="font-label-md text-label-md text-on-surface flex items-center gap-1">
-                Lieu de naissance
-                <span className="text-error">*</span>
+                Lieu de naissance<span className="text-error">*</span>
               </label>
               <input
                 name="pob"
@@ -64,8 +60,7 @@ export default function IdentityForm() {
           </div>
           <div className="space-y-1.5">
             <label htmlFor="last_name" className="font-label-md text-label-md text-on-surface flex items-center gap-1">
-              Numéro d&apos;identification nationale
-              <span className="text-error">*</span>
+              Numéro d&apos;identification nationale<span className="text-error">*</span>
             </label>
             <input
               name="first_name"
