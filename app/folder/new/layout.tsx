@@ -2,10 +2,6 @@
 
 import Header from "./_components/header"
 import SideBar from "./_components/sidebar";
-import ProgressHeader from "./_components/progress-header"
-import { usePathname } from "next/navigation";
-import { useState } from "react"
-import { createRecord } from "@/app/lib/folder/record/action";
 
 export default function Layout({
   children,

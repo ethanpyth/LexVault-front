@@ -4,10 +4,11 @@ import IdentityForm from "./_components/forms/identity";
 import Action from "./_components/actions";
 import ProgressHeader from "./_components/progress-header"
 import { createRecord } from "@/app/lib/folder/record/action";
+import { use } from "react";
 
 type PageProps = {
-  searchParams?: Promise<{
-    stepNumber: number;
+  searchParams: Promise<{
+    stepNumber: string;
     stepLabel: string;
   }>;
 };
@@ -41,9 +42,9 @@ const formsHeader = {
 }
 
 export default function Page({ searchParams }:  Readonly<PageProps> ) {
-  const resolvedParams = searchParams || {stepNumber: 1, stepLabel: "identity"}
-  const stepLabel = resolvedParams.stepLabel || ""
-  const formHeader = formsHeader[stepLabel] || formsHeader["identity"]
+  const resolvedParams = use(searchParams) || {stepNumber: "1", stepLabel: "identity"}
+  const stepLabel = resolvedParams.stepLabel || "identity"
+  const formHeader = formsHeader[stepLabel as keyof typeof formsHeader] || formsHeader["identity"]
   return (
     <>
       <ProgressHeader progressHeader={formHeader} />
