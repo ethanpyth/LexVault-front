@@ -1,10 +1,14 @@
 'use client'
 
 import IdentityForm from "./_components/forms/identity";
+import Representation from "./_components/forms/representation"
+import Attachments from "./_components/forms/attachments"
+import Payments from "./_components/forms/payments"
+import Confirmation from "./_components/forms/confirmation"
 import Action from "./_components/actions";
 import ProgressHeader from "./_components/progress-header"
 import { createRecord } from "@/app/lib/folder/record/action";
-import { use } from "react";
+import { use, useState } from "react";
 
 type PageProps = {
   searchParams: Promise<{
@@ -45,11 +49,19 @@ export default function Page({ searchParams }:  Readonly<PageProps> ) {
   const resolvedParams = use(searchParams) || {stepNumber: "1", stepLabel: "identity"}
   const stepLabel = resolvedParams.stepLabel || "identity"
   const formHeader = formsHeader[stepLabel as keyof typeof formsHeader] || formsHeader["identity"]
+
+  const [ step, setStep ] = useState(1)
+
   return (
     <>
       <ProgressHeader progressHeader={formHeader} />
       <form action={createRecord} method="POST">
-        <IdentityForm />
+        {(step === 1 || stepLabel === "identity") && <IdentityForm />}
+        {(step === 2 || stepLabel === "representation") && <Representation />}
+        {(step === 3 || stepLabel === "attachments") && <Attachments />}
+        {(step === 4 || stepLabel === "payments") && <Payments />}
+        {(step === 5 || stepLabel === "confirmation") && <Confirmation />}
+        
         <Action />
       </form>
     </>
