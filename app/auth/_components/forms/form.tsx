@@ -1,8 +1,9 @@
+import { login } from "@/app/lib/user/auth/action"
 import { PersonOutlined, LockOutlined, LoginOutlined } from "@mui/icons-material"
 
 export default function Form() {
   return (
-    <form action="" className="space-y-stack-md" method="POST">
+    <form action={login} className="space-y-stack-md">
       <div className="space-y-unit">
         <label htmlFor="agent-id" className="block font-label-caps text-label-caps text-on-surface-variant uppercase">
           Identifiant agent<span className="text-primary">*</span>

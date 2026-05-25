@@ -1,4 +1,4 @@
-export default function Welcome() {
+export default function iWelcome() {
   return (
     <div>
       <h1 className="text-3xl font-bold tracking-tight text-on-surface">

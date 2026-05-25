@@ -4,7 +4,7 @@ import NavLink from "./navLink";
 const navLinks = [
   {
     href: "./dashboard",
-    label: "Table de bord",
+    label: "Tableau de bord",
     icon: DashboardOutlined,
     isActive: false,
   },
@@ -57,7 +57,7 @@ export default function Sidebar() {
         ))}
       </nav>
       <div className="p-4 bg-surface-container-highest/50 m-4 rounded border border-outline-variant">
-        <div className="text-[11px] text-on-surface-variant leading-relaxed">
+        <div className="text-helper-xs text-on-surface-variant leading-relaxed">
           <span className="material-symbols-outlined text-primary text-sm">
             <LockOutlined />
           </span>
@@ -65,7 +65,7 @@ export default function Sidebar() {
             Session Sécurisée
           </span>
         </div>
-        <p className="text-[11px] text-on-surface-variant leading-relaxed">
+        <p className="text-helper-xs text-on-surface-variant leading-relaxed">
           Dernière connection
           <br/>
           12 octobre 2026

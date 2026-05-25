@@ -3,7 +3,7 @@ type StatusProps = {
   infrastructure: string;
 }
 
-export default function StatusCard({ status }: { status: StatusProps }) {
+export default function StatusCard({ status }: Readonly<{ status: StatusProps }>) {
   return (
     <div className="flex items-center">
       <div className="flex items-center gap-2">

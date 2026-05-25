@@ -6,7 +6,7 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="bg-surface-container-low font-sans text-on-surface flex h-screen overflow-hidden">
         <Sidebar />
         {children}
     </div>
