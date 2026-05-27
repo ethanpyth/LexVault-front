@@ -8,7 +8,7 @@ import Confirmation from "./_components/forms/confirmation"
 import Action from "./_components/actions";
 import ProgressHeader from "./_components/progress-header"
 import { createRecord } from "@/app/lib/folder/record/action";
-import { use, useState } from "react";
+import { use } from "react";
 
 type PageProps = {
   searchParams: Promise<{
@@ -60,7 +60,7 @@ export default function Page({ searchParams }:  Readonly<PageProps> ) {
         {(stepLabel === "payments") && <Payments />}
         {(stepLabel === "confirmation") && <Confirmation />}
         
-        <Action />
+        <Action currentStep={formHeader.number} />
       </form>
     </>
     

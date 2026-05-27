@@ -7,5 +7,5 @@ export default function Payments() {
       <CostBreakdown />
       <PaymentMethodContainer />
     </div>
-  ) 
+  )
 }

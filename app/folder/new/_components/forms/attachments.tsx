@@ -4,10 +4,10 @@ import FilesList from "../files-list"
 
 export default function Attachments() {
   return (
-    <div className="max-w-container-max mx-auto">
+    <>
       <Alerts />
       <BentoUpload />
       <FilesList />
-    </div>
+    </>
   )
 }

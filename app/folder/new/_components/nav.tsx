@@ -5,17 +5,17 @@ import NavLink from "./items/nav-items"
 
 const navLinks = [
   {
-    href: "./dashboard",
+    href: "../../dashboard",
     label: "Tableau de bord",
     isActive: false
   },
   {
-    href: "./folder",
+    href: "../folder",
     label: "Dossier",
     isActive: true
   },
   {
-    href: "./help",
+    href: "/help",
     label: "Aide",
     isActive: false
   },
