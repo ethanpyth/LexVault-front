@@ -2,6 +2,7 @@
 
 import { cookies } from "next/headers";
 import { API_BASE_URL } from "../../config";
+import { redirect } from "next/navigation";
 
 export async function login(formData: FormData) {
   const username = formData.get("agent-id") as string;
@@ -17,9 +18,7 @@ export async function login(formData: FormData) {
     });
 
     if (!response.ok) {
-      const errorData = await response.json();
-      console.error("Login failed:", errorData);
-      return { success: false, message: errorData.message || "Login failed" };
+      throw new Error("Login failed");
     }
 
     const data = await response.json();
@@ -41,6 +40,8 @@ export async function login(formData: FormData) {
     console.error("Error during login:", error);
     throw error;
   }
+
+  redirect("/dashboard");
 }
 
 export async function logout() {
