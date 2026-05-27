@@ -50,17 +50,15 @@ export default function Page({ searchParams }:  Readonly<PageProps> ) {
   const stepLabel = resolvedParams.stepLabel || "identity"
   const formHeader = formsHeader[stepLabel as keyof typeof formsHeader] || formsHeader["identity"]
 
-  const [ step, setStep ] = useState(1)
-
   return (
     <>
       <ProgressHeader progressHeader={formHeader} />
       <form action={createRecord} method="POST">
-        {(step === 1 || stepLabel === "identity") && <IdentityForm />}
-        {(step === 2 || stepLabel === "representation") && <Representation />}
-        {(step === 3 || stepLabel === "attachments") && <Attachments />}
-        {(step === 4 || stepLabel === "payments") && <Payments />}
-        {(step === 5 || stepLabel === "confirmation") && <Confirmation />}
+        {(stepLabel === "identity") && <IdentityForm />}
+        {(stepLabel === "representation") && <Representation />}
+        {(stepLabel === "attachments") && <Attachments />}
+        {(stepLabel === "payments") && <Payments />}
+        {(stepLabel === "confirmation") && <Confirmation />}
         
         <Action />
       </form>

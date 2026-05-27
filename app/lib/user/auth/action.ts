@@ -19,7 +19,7 @@ export async function login(formData: FormData) {
     if (!response.ok) {
       const errorData = await response.json();
       console.error("Login failed:", errorData);
-      throw new Error(errorData.message || "Login failed");
+      return { success: false, message: errorData.message || "Login failed" };
     }
 
     const data = await response.json();

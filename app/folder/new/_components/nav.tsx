@@ -23,31 +23,31 @@ const navLinks = [
 
 const navLinkSideBar = [
   {
-    href: "./new",
+    href: "./new?stepLabel=identity",
     label: "Identité",
     icon: PersonOutlined,
     isActive: false
   },
   {
-    href: "./new/representation",
+    href: "./new?stepLabel=representation",
     label: "Representation",
     icon: GavelOutlined,
     isActive: true
   },
   {
-    href: "./new/attachments",
+    href: "./new?stepLabel=attachments",
     label: "Pièces jointes",
     icon: DescriptionOutlined,
     isActive: false
   },
   {
-    href: "./new/payments",
+    href: "./new?stepLabel=payments",
     label: "Paiement",
     icon: PaymentsOutlined,
     isActive: false
   },
   {
-    href: "./new/confirmation",
+    href: "./new?stepLabel=confirmation",
     label: "Confirmation",
     icon: VerifiedOutlined,
     isActive: false
