@@ -1,5 +1,9 @@
+'use client'
+
 import { ArrowForwardOutlined, ArrowBackOutlined, CheckOutlined } from "@mui/icons-material"
 import Link from "next/link"
+import { useRecord } from "../_context/record-context"
+import { createRecord } from "@/app/lib/folder/actions"
 
 type ActionProps = {
   currentStep: number
@@ -8,6 +12,8 @@ type ActionProps = {
 const step = ["identity", "representation", "attachments", "payments", "confirmation"]
 
 export default function Action({ currentStep }: Readonly<ActionProps>) {
+  const { recordData } = useRecord()
+
   const isLastStep = currentStep === step.length
   const isFirstStep = currentStep === 1
 
@@ -39,6 +45,7 @@ export default function Action({ currentStep }: Readonly<ActionProps>) {
         <button
           title="Prochaine étape"
           type="submit"
+          onClick={() => createRecord(recordData)}
           className="px-8 py-3 bg-primary text-on-primary font-label-md text-label-md uppercase tracking-wider rounded-lg shadow-md hover:opacity-90 transition-all flex items-center"
         >
           Terminer<span className="material-symbols-outlined">

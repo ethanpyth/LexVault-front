@@ -1,6 +1,9 @@
 import { ConfirmationNumberOutlined, CreditCardOutlined } from "@mui/icons-material"
+import { useRecord } from "../../_context/record-context"
 
 export default function PaymentMethodSection() {
+  const { recordData, updateRecordData } = useRecord()
+  
   return (
     <section className="bg-surface-lowest border border-outline-variant">
       <div className="bg-surface-low px-stack-lg py-stack-md border-b border-outline-variant">
@@ -15,6 +18,8 @@ export default function PaymentMethodSection() {
               name="payment_method"
               id="payment_method"
               type="text"
+              value={recordData.payments?.method || ""}
+              onChange={(e) => updateRecordData({...recordData, payments: {...recordData.payments, method: e.target.value}})}
               className="text-primary focus:ring-primary h-5 w-5"
             />
             <div className="flex-1">
@@ -38,6 +43,8 @@ export default function PaymentMethodSection() {
               name="payment_method"
               id="payment_method"
               type="text"
+              value={recordData.payments?.method || ""}
+              onChange={(e) => updateRecordData({...recordData, payments: {...recordData.payments, method: e.target.value}})}
               className="text-primary focus:ring-primary h-5 w-5"
             />
             <div className="flex-1">
@@ -63,6 +70,8 @@ export default function PaymentMethodSection() {
             type="text"
             name="id_timbre"
             placeholder="Ex: 1234 5678 9012 3456"
+            value={recordData.payments?.idTimbre || ""}
+            onChange={(e) => updateRecordData({...recordData, payments: {...recordData.payments, idTimbre: e.target.value}})}
             className="w-full h-11 border border-outline-variant px-stack-md focus:border-primary focus:ring-1 focus:ring-primary rounded"
           />
         </div>
