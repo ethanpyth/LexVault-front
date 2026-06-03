@@ -4,9 +4,8 @@ import { useSearchParams } from "next/navigation";
 import Header from "./_components/header"
 import SideBar from "./_components/sidebar";
 
-import { useSearchParams } from "next/navigation";
 
-export function FolderLayoutClient({ children }: { children: React.ReactNode }) {
+export default function FolderLayoutClient({ children }: Readonly<{ children: React.ReactNode }>) {
   const searchParams = useSearchParams();
   const stepLabel = searchParams.get("stepLabel") || "identity";
 
