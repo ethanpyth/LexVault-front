@@ -8,6 +8,7 @@ import Confirmation from "./_components/forms/confirmation"
 import Action from "./_components/actions";
 import ProgressHeader from "./_components/progress-header"
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
 type PageProps = {
   searchParams: Promise<{
@@ -49,6 +50,14 @@ export default function Page( ) {
   const stepLabel = params.get("stepLabel") || "identity"
   const formHeader = formsHeader[stepLabel as keyof typeof formsHeader] || formsHeader["identity"]
 
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <FormContent stepLabel={stepLabel} formHeader={formHeader} />
+    </Suspense>
+  )
+}
+
+function FormContent({ stepLabel, formHeader }: Readonly<{ stepLabel: string, formHeader: { title: string, description: string, number: number } }>) {
   return (
     <div
       className={`mx-auto 
