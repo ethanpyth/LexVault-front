@@ -25,11 +25,12 @@ export interface RecordData {
     unit: string;
     infractionGravity: string;
     duree: string;
+    motif: string;
   };
   attachments: File[];
   payments: {
-    amount: number;
-    method: string;
-    idTimbre: string;
-  };
+    amount: number,
+    method: string,
+    idTimbre: string,
+  }
 }

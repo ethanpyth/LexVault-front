@@ -24,10 +24,13 @@ export default function AudiencesForm() {
             title="tribunal"
             name="tribunal"
             id="tribunal"
+            value={recordData.record?.tribunal || ""}
             onChange={(event) => updateRecordData({...recordData, record: {...recordData.record, tribunal: event.target.value}})}
             className="w-full h-12 border-outline-variant px-4 font-body-md bg-white focus:border-primary focus:ring-1 focus:ring-primary"
           >
-            <option disabled selected>Selectionnez le tribunal</option>
+            <option disabled value="">
+              Selectionnez le tribunal
+            </option>
             <option value="tribunal de grande instance">Tribunal de grande instance de Kinshasa</option>
             <option value="tribunal de commerce">Tribunal de commerce de Kinshasa</option>
           </select>
@@ -41,6 +44,7 @@ export default function AudiencesForm() {
             title="salle"
             name="salle"
             id="salle"
+            value={recordData.record?.salle || ""}
             placeholder="Ex: Salle 1"
             onChange={(event) => updateRecordData({...recordData, record: {...recordData.record, salle: event.target.value}})}
             className="w-full h-12 border border-outline px-4 font-body-md focus:border-primary focus:ring-1 focus:ring-primary"
@@ -59,6 +63,7 @@ export default function AudiencesForm() {
             placeholder="Nom du juge"
             name="juge"
             id="juge"
+            value={recordData.record?.juge || ""}
             onChange={(event) => updateRecordData({...recordData, record: {...recordData.record, juge: event.target.value}})}
             className="w-full h-12 border border-outline px-4 font-body-md focus:border-primary focus:ring-1 focus:ring-primary"
           />

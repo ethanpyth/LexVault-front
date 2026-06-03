@@ -1,5 +1,6 @@
 'use server'
 
+import { API_BASE_URL } from "../config"
 import { RecordData } from "./types"
 
 export async function createRecord(recordData: RecordData) {
@@ -27,67 +28,82 @@ export async function createRecord(recordData: RecordData) {
   const unit = recordData.record.unit
   const infractionGravity = recordData.record.infractionGravity
   const duree = recordData.record.duree
+  const motif = recordData.record.motif
+  const amount = recordData.payments.amount
+
+  console.log(
+    JSON.stringify(recordData, null, 2)
+  );
+
+  console.log("FINAL PAYLOAD:", recordData)
+
+  const payload = {
+    person: {
+      "prenom": firstName,
+      "nom": lastName,
+      "dateNaissance": dateOfBirth,
+      "nin": nin,
+      "ville": ville,
+      "commune": commune,
+      "avenue": avenue,
+      "pays": country,
+      "nationalite": nationality,
+    },
+    sentences: {
+      "typeSentence": offense,
+      "dateSentence": dateOfConviction,
+      "uniteDuree": unit,
+      "duree": Number(duree),
+      "montant": amount,
+    },
+    infractions: [
+      {
+        "qualification": offense,
+        "articleViole": penalCode,
+        "gravite": infractionGravity,
+        "dateInfraction": dateOfConviction
+      }
+    ],
+    audiences: {
+      "dateAudience": dateOfConviction,
+      "statut": "EN_COURS",
+      "tribunalId": "4de4cc0e-ff46-40ff-96e9-0baddd22f901",
+      "jugeId": "95a87fe8-1733-43f0-ab6c-7117a31f16d7"
+    },
+    decisions: {
+      "reference": `REF-${Date.now()}`,
+      "verdict": verdict,
+      "contenu": `Le prévenu a été condamné à ${duree} ${unit} pour l'infraction suivante : ${offense}. Description de l'infraction : ${infractionDescription}`,
+      "motif": motif,
+      "typeDecision": "CONDAMNATION",
+      "dateDecision": dateOfConviction
+    }
+  };
+
+  console.log("Sending to:", `${API_BASE_URL}/folder/all`);
 
   try {
-    const response = await fetch("/api/records", {
+    const response = await fetch(`${API_BASE_URL}/folder/all`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        person: {
-          "prenom": firstName,
-          "nom": lastName,
-          "date_Naissance": dateOfBirth,
-          "nin": nin,
-          "ville": ville,
-          "commune": commune,
-          "avenue": avenue,
-          "pays": country,
-          "nationalite": nationality,
-        },
-        sentences: {
-          "delit": offense,
-          "typeSentence": sentence,
-          "dateConviction": dateOfConviction,
-          "juridiction": jurisdiction,
-          "descriptionInfraction": infractionDescription,
-          "codePénal": penalCode,
-          "uniteDuree": unit,
-          "duree": duree,
-        },
-        folder: {
-          "salle": salle,
-          "juge": juge,
-          "tribunal": tribunal
-        },
-        infractions: {
-          "qualification": infractionDescription,
-          "articleViole": penalCode,
-          "gravite": infractionGravity,
-          "dateInfraction": dateOfConviction
-        },
-        audience: {
-          "dateAudience": dateOfConviction,
-          "statut": "EN_COURS",
-          "tribunalId": "8ef73450-2be0-48ef-b840-eec29a7e7259",
-          "jugeId": "82b77cc9-9321-48fb-bbf7-63c6e4dfbcba"
-        },
-        decision: {
-          "verdict": verdict,
-          "gravity": infractionGravity
-        }
-      }),
+      body: JSON.stringify(payload),
+      signal: AbortSignal.timeout(30000),
     });
 
     if (!response.ok) {
-      console.error("Failed to create record:", response.statusText);
-      throw new Error("Failed to create record");
+      const errorText = await response.text();
+      console.error("STATUS:", response.status);
+      console.error("STATUS TEXT:", response.statusText);
+      console.error("BODY:", errorText);
+      throw new Error(`Failed (${response.status}): ${errorText}`);
     }
+
+    console.log("Record created successfully");
+    return { success: true, firstName, lastName, dateOfBirth, placeOfBirth, nin };
   } catch (error) {
     console.error("Error creating record:", error);
-    throw new Error("Failed to create record");
+    throw error;
   }
-
-  return { firstName, lastName, dateOfBirth, placeOfBirth, nin };
 }

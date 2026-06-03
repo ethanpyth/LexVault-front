@@ -7,9 +7,7 @@ import Payments from "./_components/forms/payments"
 import Confirmation from "./_components/forms/confirmation"
 import Action from "./_components/actions";
 import ProgressHeader from "./_components/progress-header"
-import { createRecord } from "@/app/lib/folder/record/action";
-import RecordProvider from "./_context/record-context";
-import { use } from "react";
+import { useSearchParams } from "next/navigation";
 
 type PageProps = {
   searchParams: Promise<{
@@ -46,32 +44,30 @@ const formsHeader = {
   },
 }
 
-export default function Page({ searchParams }:  Readonly<PageProps> ) {
-  const resolvedParams = use(searchParams) || {stepNumber: "1", stepLabel: "identity"}
-  const stepLabel = resolvedParams.stepLabel || "identity"
+export default function Page( ) {
+  const params = useSearchParams() || {stepNumber: "1", stepLabel: "identity"}
+  const stepLabel = params.get("stepLabel") || "identity"
   const formHeader = formsHeader[stepLabel as keyof typeof formsHeader] || formsHeader["identity"]
 
   return (
-    <RecordProvider>
-      <div
-        className={`mx-auto 
-          ${stepLabel === "representation" ? "max-w-200 pt-stack-md"
-            : stepLabel === "identity" ? "max-w-180 px-gutter py-12"
-              : stepLabel === "attachments" ? "max-w-container-max"
-                : stepLabel === "payments" ? "max-w-container-max py-10 px-gutter"
-                  : "max-w-container-max py-margin-desktop px-gutter"}`}
-      >
-        <ProgressHeader progressHeader={formHeader} />
-        <form action={createRecord} method="POST">
-          {(stepLabel === "identity") && <IdentityForm />}
-          {(stepLabel === "representation") && <Representation />}
-          {(stepLabel === "attachments") && <Attachments />}
-          {(stepLabel === "payments") && <Payments />}
-          {(stepLabel === "confirmation") && <Confirmation />}
-          
-          <Action currentStep={formHeader.number} />
-        </form>
+    <div
+      className={`mx-auto 
+        ${stepLabel === "representation" ? "max-w-200 pt-stack-md"
+          : stepLabel === "identity" ? "max-w-180 px-gutter py-12"
+            : stepLabel === "attachments" ? "max-w-container-max"
+              : stepLabel === "payments" ? "max-w-container-max py-10 px-gutter"
+                : "max-w-container-max py-margin-desktop px-gutter"}`}
+    >
+      <ProgressHeader progressHeader={formHeader} />
+      <div>
+        {(stepLabel === "identity") && <IdentityForm />}
+        {(stepLabel === "representation") && <Representation />}
+        {(stepLabel === "attachments") && <Attachments />}
+        {(stepLabel === "payments") && <Payments />}
+        {(stepLabel === "confirmation") && <Confirmation />}
+
+        <Action currentStep={formHeader.number} />
       </div>
-    </RecordProvider>
+    </div>
   )
 }

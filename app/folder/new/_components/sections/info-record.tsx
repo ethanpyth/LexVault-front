@@ -42,10 +42,10 @@ export default function InfoRecordForm() {
             className="w-full h-12 border border-outline px-4 font-body-md bg-white focus:border-primary focus:ring-primary focus:ring-1"
           >
             <option disabled defaultValue="Selectionnez le type de peine">Selectionnez le type de peine</option>
-            <option value="emprisonnement">Emprisonnement</option>
-            <option value="amende">Amende</option>
-            <option value="tig">Travaux d&apos;intéret Génerale</option>
-            <option value="sursis">Sursis probatoire</option>
+            <option value="PRISON">Emprisonnement</option>
+            <option value="AMENDE">Amende</option>
+            <option value="TRAVAUX">Travaux d&apos;intéret Génerale</option>
+            <option value="SURSIS">Sursis probatoire</option>
           </select>
           <span className="text-xs text-on-surface-variant italic">
             Précisez la nature principale de la sanction
@@ -61,8 +61,8 @@ export default function InfoRecordForm() {
               type="number"
               id="time"
               placeholder="Ex: 12 mois"
-              value={recordData.record?.sentence || ""}
-              onChange={(e) => updateRecordData({...recordData, record: {...recordData.record, sentence: e.target.value}})}
+              value={recordData.record?.duree || ""}
+              onChange={(e) => updateRecordData({...recordData, record: {...recordData.record, duree: e.target.value}})}
               className="w-full h-12 border border-outline px-4 font-body focus:border-primary focus:ring-1 focus:ring-primary"
             />
           </div>
@@ -78,7 +78,7 @@ export default function InfoRecordForm() {
               onChange={(e) => updateRecordData({...recordData, record: {...recordData.record, unit: e.target.value}})}
               className="w-full h-12 border border-outline px-4 font-body-md bg-white focus:border-primary focus:ring-primary focus:ring-1"
             >
-              <option disabled defaultValue="Selectionnez l'unité">Selectionnez l'unité</option>
+              <option disabled defaultValue="Selectionnez l'unité">Selectionnez l&apos;unité</option>
               <option value="mois">Mois</option>
               <option value="ans">Ans</option>
             </select>
@@ -125,6 +125,8 @@ export default function InfoRecordForm() {
             title="Champ du motif de la décision judiciaire"
             name="motif"
             id="motif"
+            value={recordData.record?.motif || ""}
+            onChange={(e) => updateRecordData({...recordData, record: {...recordData.record, motif: e.target.value}})}
             placeholder="Description détaillée du motif de la décision judiciaire..." 
             className="w-full border border-outline p-4 font-body-md focus:border-primary">
 

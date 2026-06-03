@@ -5,12 +5,12 @@ import NavLink from "./items/nav-items"
 
 const navLinks = [
   {
-    href: "../../dashboard",
+    href: "/dashboard",
     label: "Tableau de bord",
     isActive: false
   },
   {
-    href: "../folder",
+    href: "/folder",
     label: "Dossier",
     isActive: true
   },
@@ -23,31 +23,31 @@ const navLinks = [
 
 const navLinkSideBar = [
   {
-    href: "./new?stepLabel=identity",
+    href: "/folder/new?stepLabel=identity",
     label: "Identité",
     icon: PersonOutlined,
     isActive: false
   },
   {
-    href: "./new?stepLabel=representation",
+    href: "/folder/new?stepLabel=representation",
     label: "Representation",
     icon: GavelOutlined,
     isActive: true
   },
   {
-    href: "./new?stepLabel=attachments",
+    href: "/folder/new?stepLabel=attachments",
     label: "Pièces jointes",
     icon: DescriptionOutlined,
     isActive: false
   },
   {
-    href: "./new?stepLabel=payments",
+    href: "/folder/new?stepLabel=payments",
     label: "Paiement",
     icon: PaymentsOutlined,
     isActive: false
   },
   {
-    href: "./new?stepLabel=confirmation",
+    href: "/folder/new?stepLabel=confirmation",
     label: "Confirmation",
     icon: VerifiedOutlined,
     isActive: false

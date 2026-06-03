@@ -1,8 +1,15 @@
+'use client'
+
+import { useEffect } from "react";
 import { useRecord } from "../../_context/record-context"
 import GuidanceAlert from "../guidance-alerts"
 
 export default function IdentityForm() {
   const { recordData, updateRecordData } = useRecord()
+
+  useEffect(() => {
+    console.log("IDENTITY", recordData);
+  }, [recordData]);
 
   return (
     <>
@@ -37,7 +44,15 @@ export default function IdentityForm() {
               id="first_name"
               type="text"
               value={recordData.identity?.firstName || ""}
-              onChange={(e) => updateRecordData({ ...recordData, identity: { ...recordData.identity, firstName: e.target.value } })}
+              onChange={(e) => {
+                console.log("FIRST NAME =", e.target.value)
+                updateRecordData({
+                  identity: {
+                    ...recordData.identity,
+                    firstName: e.target.value
+                  }
+                })
+              }}
               className="w-full h-11 px-4 border border-outline-variant rounded-lg focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all font-body-md"
             />
           </div>
