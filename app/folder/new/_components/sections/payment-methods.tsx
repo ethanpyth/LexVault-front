@@ -13,12 +13,13 @@ export default function PaymentMethodSection() {
       </div>
       <div className="p-stack-lg space-y-stack-md">
         <label htmlFor="payment_method" className="block cursor-pointer group">
-          <div className="flex items-center gap-stack-md p-stack-md border-outline-variant group:hover:border-primary">
+          <div className="flex items-center gap-stack-md p-stack-md border border-outline-variant group-hover:border-primary transition-colors">
             <input
               name="payment_method"
               id="payment_method"
-              type="text"
-              value={recordData.payments?.method || ""}
+              type="radio"
+              value="electronic_stamp"
+              checked={recordData.payments?.method === "electronic_stamp"}
               onChange={(e) => updateRecordData({...recordData, payments: {...recordData.payments, method: e.target.value}})}
               className="text-primary focus:ring-primary h-5 w-5"
             />
@@ -38,12 +39,13 @@ export default function PaymentMethodSection() {
           </div>
         </label>
         <label htmlFor="payment_method" className="block cursor-pointer group">
-          <div className="flex items-center gap-stack-md p-stack-md border-outline-variant group:hover:border-primary">
+          <div className="flex items-center gap-stack-md p-stack-md border border-outline-variant group-hover:border-primary transition-colors">
             <input
               name="payment_method"
               id="payment_method"
-              type="text"
-              value={recordData.payments?.method || ""}
+              type="radio"
+              value="credit_card"
+              checked={recordData.payments?.method === "credit_card"}
               onChange={(e) => updateRecordData({...recordData, payments: {...recordData.payments, method: e.target.value}})}
               className="text-primary focus:ring-primary h-5 w-5"
             />
