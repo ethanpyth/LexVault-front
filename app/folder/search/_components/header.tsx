@@ -1,4 +1,4 @@
-import { ShieldOutlined } from "@mui/icons-material"
+import { ShieldOutlined, NotificationsOutlined, AccountCircleOutlined  } from "@mui/icons-material"
 import NavLink from "./navLink"
 
 const navLinks = [
@@ -43,6 +43,26 @@ export default function Header() {
             <NavLink key={index} href={navLink.href} isActive={navLink.isActive} label={navLink.label} />
           ))}
         </nav>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            title="Bouton"
+            className="flex items-center justify-center rounded h-10 w-10 bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-all"
+          >
+            <span className="material-symbols-outlined text-[20px]">
+              <NotificationsOutlined />
+            </span>
+          </button>
+          <button
+            type="button"
+            title="Bouton"
+            className="flex items-center justify-center rounded h-10 w-10 bg-surface-container-low text-on-surface-variant hover:bg-surface-container transition-all"
+          >
+            <span className="material-symbols-outlined text-[20px]">
+              <AccountCircleOutlined />
+            </span>
+          </button>
+        </div>
       </div>
     </header>
   )

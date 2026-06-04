@@ -107,3 +107,5 @@ export async function createRecord(recordData: RecordData) {
     throw error;
   }
 }
+
+export async function getFolders() {}
