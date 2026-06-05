@@ -1,3 +1,5 @@
+'use client'
+
 import { SearchOutlined } from "@mui/icons-material"
 import Filters from "./filters-group"
 

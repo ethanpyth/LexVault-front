@@ -34,3 +34,38 @@ export interface RecordData {
     idTimbre: string,
   }
 }
+
+export interface FoldersData {
+  data: ({
+    personne: {
+      id: string;
+      createdAt: Date;
+      updatedAt: Date;
+      nom: string;
+      prenom: string;
+      dateNaissance: Date | null;
+      sexe: 'MASCULIN' | 'FEMININ' | null;
+      nationalite: string | null;
+      nin: string | null;
+      telephone: string | null;
+      email: string | null;
+      adresseId: string | null;
+    };
+  } & {
+    id: string;
+    numeroCasier: string;
+    statut: 'TRAVAUX' | 'PRISON' | 'AMENDE' | 'SURSIS';
+    dateCreation: Date;
+    createdAt: Date;
+    updatedAt: Date;
+    personneId: string;
+  })[],
+  meta: {
+    page: number,
+    pageSize: number,
+    total: number,
+    pageCount: number,
+    hasNext: number,
+    hasPrevious: number,
+  }
+}
