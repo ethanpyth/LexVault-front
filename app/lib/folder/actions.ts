@@ -1,7 +1,7 @@
 'use server'
 
 import { API_BASE_URL } from "../config"
-import { RecordData } from "./types"
+import { FoldersData, RecordData } from "./types"
 
 export async function createRecord(recordData: RecordData) {
   const firstName = recordData.identity.firstName
@@ -108,4 +108,46 @@ export async function createRecord(recordData: RecordData) {
   }
 }
 
-export async function getFolders() {}
+export async function getFolders({
+  page,
+  pageSize,
+  firstName,
+  lastName,
+  nin,
+  birthday
+}: {
+    page: string,
+    pageSize: string,
+    firstName?: string,
+    lastName?: string,
+    birthday?: string,
+    nin?: string
+}): Promise<FoldersData> {
+  const params = new URLSearchParams()
+
+  params.set("page", String(page))
+  params.set("pageSize", String(pageSize))
+
+  if (firstName) params.set("firstName", firstName)
+  if (lastName) params.set("lastName", lastName)
+  if (birthday) params.set("birthday", birthday)
+  if (nin) params.set("nin", nin)
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/folder?${params.toString()}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store"
+    })
+
+    const data = response.json() 
+
+    console.log(data)
+
+    return data
+  } catch (e) {
+    throw e;
+  }
+}

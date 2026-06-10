@@ -1,3 +1,5 @@
+'use client'
+
 import { FilterAltOutlined } from "@mui/icons-material"
 import { useSearchParams, useRouter } from "next/navigation"
 import { useState } from "react"
