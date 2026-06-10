@@ -118,22 +118,23 @@ export async function getFolders({
 }: {
     page: string,
     pageSize: string,
-    firstName: string,
-    lastName: string,
-    birthday: string,
-    nin: string
+    firstName?: string,
+    lastName?: string,
+    birthday?: string,
+    nin?: string
 }): Promise<FoldersData> {
-  const params = {
-    page: Number(page),
-    pageSize: Number(pageSize),
-    firstName: firstName,
-    lastName: lastName,
-    birthday: birthday,
-    nin: nin,
-  }
+  const params = new URLSearchParams()
+
+  params.set("page", String(page))
+  params.set("pageSize", String(pageSize))
+
+  if (firstName) params.set("firstName", firstName)
+  if (lastName) params.set("lastName", lastName)
+  if (birthday) params.set("birthday", birthday)
+  if (nin) params.set("nin", nin)
 
   try {
-    const response = await fetch(`${API_BASE_URL}/folder?page=${params.page}&pageSize=${params.pageSize}&firstName=${params.firstName}&lastName=${params.lastName}&birthday=${params.birthday}&nin=${params.nin}`, {
+    const response = await fetch(`${API_BASE_URL}/folder?${params.toString()}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -141,9 +142,11 @@ export async function getFolders({
       cache: "no-store"
     })
 
-    console.log(response.json())
+    const data = response.json() 
 
-    return response.json()
+    console.log(data)
+
+    return data
   } catch (e) {
     throw e;
   }

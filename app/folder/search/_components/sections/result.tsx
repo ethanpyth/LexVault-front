@@ -5,14 +5,14 @@ import Pagination from "../pagination"
 import TableRow from "../table-row"
 import { FoldersData } from "@/app/lib/folder/types"
 
-export default async function Results({ result }: {result: FoldersData}) {
+export default async function Results({ result }: Readonly<{result: FoldersData}>) {
 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center justify-between">
         <h3 className="text-on-surface text-2xl font-bold">
           Résultat de la recherche <span className="text-on-surface-variant font-normal text-base ml-2">
-            ({result.meta.total} enregistrements trouvés)
+            ({result.meta.total ?? 0} enregistrements trouvés)
           </span>
         </h3>
         <div className="flex gap-2">

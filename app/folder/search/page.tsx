@@ -7,10 +7,10 @@ import { FoldersData } from "../../lib/folder/types";
 type PageParamsProps = {
   page: string,
   pageSize: string,
-  firstName: string,
-  birthday: string,
-  nin: string,
-  lastName: string,
+  firstName?: string,
+  birthday?: string,
+  nin?: string,
+  lastName?: string,
 }
 
 export default async function Page({ searchParams }: Readonly<{ searchParams: Promise<PageParamsProps> }>) {
