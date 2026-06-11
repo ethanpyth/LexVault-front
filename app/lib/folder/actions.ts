@@ -148,6 +148,26 @@ export async function getFolders({
 
     return data
   } catch (e) {
-    throw e;
+    throw e
+  }
+}
+
+export async function getFolderByCJNumber(cjNumber: string) {
+  if (cjNumber.length <= 0) {
+    throw new Error("Le champ ne doit pas etre vide")
+  }
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/folder?cjNumber=${cjNumber}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      cache: "no-store"
+    })
+    
+    return response.json()
+  } catch (e) {
+    throw e
   }
 }
