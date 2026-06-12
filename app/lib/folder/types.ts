@@ -69,3 +69,72 @@ export interface FoldersData {
     hasPrevious: number,
   }
 }
+
+export interface Folder {
+    id: string,
+    numeroCasier: string,
+    statut: "SUSPENDU" | "ARCHIVE" | "ACTIF",
+    dateCreation: string,
+    createdAt: string,
+    updatedAt: string,
+    personneId: string,
+    personne: Personne,
+    infractions: Infraction[],
+    audiences: Audience[],
+    decisions: Decision[]
+}
+
+export interface Infraction {
+  id: string,
+  qualification: string,
+  articleViole: string,
+  description: string | null,
+  gravite: string,
+  dateInfraction: string,
+  lieu: string | null,
+  createdAt: string,
+  updatedAt: string,
+  casierId: string
+}
+
+export interface Audience {
+  id: string,
+  dateAudience: string,
+  salle: string | null,
+  jugeId: string,
+  statut: "EN_COURS" | "EN_ATTENTE" | "TERMINE",
+  createdAt: string,
+  updatedAt: string,
+  tribunalId: string,
+  casierId: string,
+  userId: string | null
+}
+
+export interface Decision {
+  id: string,
+  reference: string,
+  contenu: string,
+  dateDecision: string,
+  typeDecision: string,
+  verdict: string,
+  motivation: string,
+  audienceId: string,
+  casierId: string,
+  createdAt: string,
+  updatedAt: string
+}
+
+export interface Personne {
+  id: string,
+  nom: string,
+  prenom: string,
+  dateNaissance: string,
+  sexe: string,
+  nationalite: string,
+  nin: string,
+  telephone: string,
+  email: string,
+  createdAt: string,
+  updatedAt: string,
+  adresseId: string
+}

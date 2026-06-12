@@ -158,7 +158,7 @@ export async function getFolderByCJNumber(cjNumber: string) {
   }
 
   try {
-    const response = await fetch(`${API_BASE_URL}/folder?cjNumber=${cjNumber}`, {
+    const response = await fetch(`${API_BASE_URL}/folder/${cjNumber}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
