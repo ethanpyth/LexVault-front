@@ -15,11 +15,9 @@ export default function SearchWidget() {
   }
   
   const setParams = () => {
-    const params = new URLSearchParams()
+    if (!cjNumber.cjNumber.trim()) return
 
-    params.set("cjNumber", String(cjNumber.cjNumber))
-
-    router.push(`/folder/${cjNumber.cjNumber}`)
+    router.push(`/folder/${encodeURIComponent(cjNumber.cjNumber)}`)
   }
 
   return (

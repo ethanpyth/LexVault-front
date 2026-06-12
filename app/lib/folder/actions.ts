@@ -153,8 +153,8 @@ export async function getFolders({
 }
 
 export async function getFolderByCJNumber(cjNumber: string) {
-  if (cjNumber.length <= 0) {
-    throw new Error("Le champ ne doit pas etre vide")
+  if (cjNumber.length <= 6) {
+    throw new Error("Le champ ne doit pas etre vide et doit contenir au moins 14 caractères")
   }
 
   try {

@@ -1,7 +1,18 @@
 import { EventOutlined, FingerprintOutlined, VerifiedOutlined, HiveOutlined, DescriptionOutlined, EditNoteOutlined } from "@mui/icons-material"
 import KPI from "../container/kpi"
 
-export default function HeaderProfileCard() {
+type ProfileProps = {
+  nom: string,
+  birthday: string,
+  pob: string,
+  country: string,
+  cjNumber: string,
+  nbc: string,
+  nbp: string,
+  status: string,
+}
+
+export default function HeaderProfileCard(profile: Readonly<ProfileProps>) {
   return (
     <div className="bg-white rounded-2xl border border-outline-variant p-8 mb-10 shadow-sm overflow-hiddden relative">
       <div className="flex flex-col lg:flex-row items-center lg:items-start justify-between gap-10">
@@ -19,7 +30,7 @@ export default function HeaderProfileCard() {
           </div>
           <div className="text-center md:text-left pt-2">
             <div className="flex flex-col sm:flex-row items-center gap-4 mb-4">
-              <h1 className="text-3xl lg:text-4xl font-bold text-on-surface tracking-tight">Jean DUPONT</h1>
+              <h1 className="text-3xl lg:text-4xl font-bold text-on-surface tracking-tight">{ profile.nom }</h1>
               <span className="bg-primary/5 text-primary text-xs font-bold px-3 py-1 rounded-full border border-primary/20 tracking-wide uppercase">
                 <HiveOutlined />
               </span>
@@ -30,7 +41,7 @@ export default function HeaderProfileCard() {
                   <EventOutlined />
                 </span>
                 <span className="font-medium text-on-surface">
-                  Né le 15/05/2026 (38 ans) à Paris(75), France
+                  Né le {new Date(profile.birthday).toDateString()} ({(2026 - new Date(profile.birthday).getFullYear())} ans) à { profile.pob }(75), { profile.country }
                 </span>
               </p>
               <p className="text-on-surface-variant flex items-center justify-center md:justify-start gap-3">
@@ -38,7 +49,7 @@ export default function HeaderProfileCard() {
                   <FingerprintOutlined />
                 </span>
                 <span className="font-medium text-on-surface">
-                  Dossier National : <span className="font-bold">#FR-882934-C8</span>
+                  Dossier National : <span className="font-bold">#{ profile.cjNumber }</span>
                 </span>
               </p>
               <div className="flex items-center justify-center md:justify-start gap-2 pt-2">
@@ -73,7 +84,7 @@ export default function HeaderProfileCard() {
           </button>
         </div>
       </div>
-      <KPI />
+      <KPI status={profile.status} nbp={profile.nbp} nbc={profile.nbc} />
     </div>
   )
 }
