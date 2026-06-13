@@ -9,7 +9,7 @@ type Activity = {
   icon: SvgIconComponent;
 }
 
-export function ActivityItem({ activity }: { activity: Activity }) {
+export function ActivityItem({ activity }: Readonly<{ activity: Activity }>) {
   const Icon = activity.icon;
   return (
     <div className="flex gap-4">
