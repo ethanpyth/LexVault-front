@@ -37,7 +37,7 @@ export default async function Page({ params }: Readonly<{ params: Promise<{ cjNu
         status={folder.statut}
       />
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-        <RecordsTimeline />
+        <RecordsTimeline records={folder} />
         <SidebarInfo />
       </div>
     </>

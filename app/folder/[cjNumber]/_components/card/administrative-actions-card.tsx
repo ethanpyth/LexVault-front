@@ -42,8 +42,8 @@ export default function AdministrativeActionsCard() {
               <VerifiedUserOutlined />
             </span>
             <div>
-              <span className="block text-sm font-bold text-on-surface">Requete en effacement</span>
-              <span className="block text-helper-xs text-on-surface-variant">Procédure de droit à l&apos;éffacement</span>
+              <span className="block text-sm font-bold text-on-surface">Certificat de réhabilitation</span>
+              <span className="block text-helper-xs text-on-surface-variant">Générer attestation officiel</span>
             </div>
           </div>
           <span className="material-symbols-outlined text-outline group-hover:text-primary transition-transform group-hover:translate-x-1">

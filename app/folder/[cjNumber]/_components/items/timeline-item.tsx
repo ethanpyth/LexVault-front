@@ -1,19 +1,21 @@
 import { SvgIconComponent, CalendarTodayOutlined } from "@mui/icons-material"
 
 type TimelineItemProps = {
-  status: boolean,
+  status: string,
   icon: SvgIconComponent,
   description: string,
   délit: string,
   date: string,
+  side: boolean,
   action: React.ReactNode
 }
 
 export default function TimelineItem(timelineItem: Readonly<TimelineItemProps>) {
   const Icon = timelineItem.icon
+  const date = new Date(timelineItem.date).toLocaleDateString()
 
   return (
-    <div className="relative flex flex-col lg:flex-row group items-start">
+    <div className={`relative flex flex-col ${timelineItem.side ? "lg:flex-row-reverse" : "lg:flex-row"} group items-start`}>
       <div
         className="absolute left-5 -translate-x-1/2 lg:left-1/2 flex items-center justify-center w-12 h-12 rounded-full bg-white border-[3px] borer-error text-error z-10 shadow-md"
       >
@@ -26,12 +28,12 @@ export default function TimelineItem(timelineItem: Readonly<TimelineItemProps>) 
       >
         <div className="flex items-center justify-between mb-4">
           <time
-            dateTime={timelineItem.date}
+            dateTime={date.toLocaleString()}
             className="font-bold text-error text-sm tracking-tight flex items-center gap-2"
           >
             <span className="material-symbols-outlined text-[18px]">
               <CalendarTodayOutlined />
-            </span>{timelineItem.date}
+            </span>{date}
           </time>
           <span className="px-3 py-1 rounded-full text- font-bold bg-error text-white uppercase tracking-widest shadow-sm">
             {timelineItem.status}
