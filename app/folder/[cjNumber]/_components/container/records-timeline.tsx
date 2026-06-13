@@ -1,6 +1,9 @@
-import { HistoryEduOutlined } from "@mui/icons-material"
+import { Folder } from "@/app/lib/folder/types"
+import { CheckCircleOutlineOutlined, HistoryEduOutlined, LockClockOutlined, ReportProblemOutlined } from "@mui/icons-material"
+import TimelineItem from "../items/timeline-item"
+import { Key } from "react"
 
-export default function RecordsTimeline() {
+export default function RecordsTimeline({ records }: Readonly<{ records: Folder }>) {
   return (
     <div className="lg:col-span-2 space-y-8">
       <div className="flex items-center justify-between">
@@ -26,9 +29,19 @@ export default function RecordsTimeline() {
           </button>
         </div>
       </div>
-      <div className="relative pl-10 lg:pl-0 space-y-12 before:absolute before:inset-0 before:left-5 before:h-full before:w-0.5 before:bg-outline-variant lg:before:left-1 lg:before:-ml-px">
-        ::before
-        
+      <div className="relative pl-10 lg:pl-0 space-y-12 before:absolute before:content-[''] before:inset-0 before:left-5 before:h-full before:w-0.5 before:bg-outline-variant lg:before:left-1 lg:before:-ml-px">
+        {records.infractions.map((folder) => (
+          <TimelineItem
+            key={folder.id}
+            status={records.statut}
+            icon={records.statut === "ACTIF" ? ReportProblemOutlined : records.statut === "ARCHIVE" ? CheckCircleOutlineOutlined : LockClockOutlined }
+            description={folder.description ?? ""}
+            délit={folder.qualification}
+            date={folder.dateInfraction}
+            side={false}
+            action={undefined}
+          />
+        ))}
       </div>
     </div>
   )
