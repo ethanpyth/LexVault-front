@@ -1,6 +1,7 @@
 import StatCard from "./card/stat-card"
+import StatCardProps from "./card/stat-card"
 
-export default function Stat({ stats }: Readonly<{ stats: StatCards[] }>) {
+export default function Stat({ stats }: Readonly<{ stats: StatCardProps[] }>) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-18">
       {stats.map((stat, index) => (

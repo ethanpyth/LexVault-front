@@ -1,4 +1,4 @@
-type StatCardProps = {
+export type StatCardProps = {
   label: string,
   number: string
   hints: string
@@ -13,7 +13,7 @@ export default function StatCard({ statCard }: Readonly<{ statCard: StatCardProp
         </span>
         <span className="text-primary text-xs font-black bg-primary-fixed px-2 py-1">{ statCard.hints }</span>
       </div>
-      <p className="text-primary text-xs font-black bg-primary-fixed px-2 py-1">{ statCard.hint }</p>
+      <p className="text-4xl font-black text-on-primary-fixed">{ statCard.number }</p>
     </div>
   )
 }
