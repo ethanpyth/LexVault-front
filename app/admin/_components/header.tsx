@@ -17,7 +17,7 @@ export default function Header() {
             Gestion des habilitations
           </h2>
         </div>
-        <label htmlFor="" className="hidden md:flex flex-col min-w-60 h-10">
+        <label htmlFor="query" className="hidden md:flex flex-col min-w-60 h-10">
           <div className="flex w-full flex-1 items-strecth bg-surface-container-low border-b-2 border-outline">
             <div className="text-on-surface-variant flex items-center justify-center pl-4">
               <span className="material-symbols-outlined text-">
@@ -29,6 +29,8 @@ export default function Header() {
               onChange={(e) => {}}
               value={""}
               type="text"
+              name="query"
+              id="query"
               placeholder="Rechercher un agent"
               className="w-full border-none bg-transparent focus:ring-0 text-sm placeholder:text-on-surface-variant"
             />
@@ -62,6 +64,7 @@ export default function Header() {
             src="https://placeholder.pics/svg/300"
             width={10}
             height={10}
+            unoptimized={true}
           />
         </div>
       </div>

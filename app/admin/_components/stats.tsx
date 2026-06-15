@@ -1,5 +1,4 @@
-import StatCard from "./card/stat-card"
-import StatCardProps from "./card/stat-card"
+import StatCard, { StatCardProps } from "./card/stat-card"
 
 export default function Stat({ stats }: Readonly<{ stats: StatCardProps[] }>) {
   return (

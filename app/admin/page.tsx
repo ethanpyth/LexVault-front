@@ -1,4 +1,6 @@
 import Stat from "./_components/stats"
+import MainContentSection from "./_components/main-content-section"
+import DetailPanel from "./_components/detail-panel"
 
 const stats = [
   {
@@ -31,8 +33,8 @@ export default function Page() {
           </p>
         </div>
         <Stat stats={ stats } />
-        <div className=""></div>
-        <div className=""></div>
+        <MainContentSection/>
+        <DetailPanel />
       </div>
     </main>
   )
