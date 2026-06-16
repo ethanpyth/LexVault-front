@@ -1,6 +1,7 @@
 import Stat from "./_components/stats"
 import MainContentSection from "./_components/main-content-section"
 import DetailPanel from "./_components/detail-panel"
+import { getUsers } from "../lib/user/action"
 
 const stats = [
   {
@@ -20,7 +21,18 @@ const stats = [
   },
 ] 
 
-export default function Page() {
+type PageParamsProps = {
+  page: string,
+  pageSize: string,
+}
+
+export default async function Page({ searchParams }: Readonly<{ searchParams: Promise<PageParamsProps> }>) {
+  const params = await searchParams 
+
+  const page = params.page
+  const pageSize = params.pageSize
+  const data = await getUsers({ page: Number(page) ?? 1, pageSize: Number(pageSize) ?? 5 })
+  
   return (
     <main className="flex-1 p-6 lg:p-10 overflow-y-auto bg-surface-bright">
       <div className="max-w-6xl mx-auto">
@@ -33,7 +45,7 @@ export default function Page() {
           </p>
         </div>
         <Stat stats={ stats } />
-        <MainContentSection/>
+        <MainContentSection tableProps={{ meta: data.meta, users: data.data }}/>
         <DetailPanel />
       </div>
     </main>

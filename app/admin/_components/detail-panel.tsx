@@ -1,4 +1,5 @@
 import { InfoOutlined } from "@mui/icons-material"
+import SecuritySummary from "./security-summary"
 
 export default function DetailPanel() {
   return (
@@ -58,7 +59,7 @@ export default function DetailPanel() {
               <button
                 title="Ennregistrer"
                 type="button"
-                className="px-6 py-3 text-sm font-black text-on-primary uppercase tracking-widest hover:bg-primary-container shadow-md"
+                className="px-6 py-3 text-sm font-black bg-primary text-on-primary uppercase tracking-widest hover:bg-primary-container shadow-md"
               >
                 Enregistrer
               </button>
@@ -66,6 +67,7 @@ export default function DetailPanel() {
           </div>
         </div>
       </div>
+      <SecuritySummary />
     </div>
   )
 }

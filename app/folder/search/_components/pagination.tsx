@@ -77,7 +77,7 @@ export default function PaginationButton({ page, pageCount, pageSize, total }: R
   )
 }
 
-function getPageNumbers(currentPage: number, totalPages: number) {
+export function getPageNumbers(currentPage: number, totalPages: number) {
   const pages: (number | string)[] = [];
 
   if (totalPages <= 7) {

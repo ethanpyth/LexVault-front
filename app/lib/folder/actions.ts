@@ -1,7 +1,7 @@
 'use server'
 
 import { API_BASE_URL } from "../config"
-import { FoldersData, RecordData } from "./types"
+import { FoldersData, RecordData } from "../types"
 
 export async function createRecord(recordData: RecordData) {
   const firstName = recordData.identity.firstName
@@ -116,12 +116,12 @@ export async function getFolders({
   nin,
   birthday
 }: {
-    page: string,
-    pageSize: string,
-    firstName?: string,
-    lastName?: string,
-    birthday?: string,
-    nin?: string
+  page: string,
+  pageSize: string,
+  firstName?: string,
+  lastName?: string,
+  birthday?: string,
+  nin?: string
 }): Promise<FoldersData> {
   const params = new URLSearchParams()
 
@@ -142,7 +142,7 @@ export async function getFolders({
       cache: "no-store"
     })
 
-    const data = response.json() 
+    const data = response.json()
 
     console.log(data)
 
@@ -165,7 +165,7 @@ export async function getFolderByCJNumber(cjNumber: string) {
       },
       cache: "no-store"
     })
-    
+
     return response.json()
   } catch (e) {
     throw e

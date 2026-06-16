@@ -1,9 +1,15 @@
 'use client'
 
 import { PersonAddOutlined } from "@mui/icons-material"
-import Table from "./table"
+import Table, { PaginationProps, UserProps } from "./table"
 
-export default function MainContentSection() {
+type TableProps = {
+  meta: PaginationProps,
+  users: UserProps[]
+} 
+
+export default function MainContentSection({ tableProps }: Readonly<{ tableProps: TableProps }>) {
+  
   return (
     <div className="bg-surface-container-lowest border border-outline-variant shadow-sm">
       <div className="flex flex-col sm:flex-row items-center justify-between border-b border-outline-variant px-6 py-0 gap-4">
@@ -45,7 +51,7 @@ export default function MainContentSection() {
           </button>
         </div>
       </div>
-      <Table />
+      <Table pagination={tableProps.meta} users={tableProps.users} />
     </div>
   )
 }

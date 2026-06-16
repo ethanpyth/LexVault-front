@@ -2,7 +2,7 @@ import Header from "./_components/sections/header"
 import Search from "./_components/sections/search"
 import Results from "./_components/sections/result"
 import { getFolders } from "@/app/lib/folder/actions";
-import { FoldersData } from "../../lib/folder/types";
+import { FoldersData } from "../../lib/types";
 
 type PageParamsProps = {
   page: string,

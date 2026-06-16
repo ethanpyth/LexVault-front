@@ -138,3 +138,24 @@ export interface Personne {
   updatedAt: string,
   adresseId: string
 }
+
+export interface User {
+  id : string,
+  username : string,
+  passwordHash : string
+  role : Role,
+  isActive : boolean,
+  lastLogin : Date,
+  createdAt : Date,
+  updatedAt : Date,
+  personneId : string,
+  personne : Personne,
+}
+
+export enum Role {
+  ADMIN,
+  GREFFIER,
+  JUGE,
+  PROCUREUR,
+  ACCUSE,
+}
