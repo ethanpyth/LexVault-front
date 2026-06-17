@@ -30,8 +30,10 @@ export default async function Page({ searchParams }: Readonly<{ searchParams: Pr
   const params = await searchParams 
 
   const page = params.page
-  const pageSize = params.pageSize
-  const data = await getUsers({ page: Number(page) ?? 1, pageSize: Number(pageSize) ?? 5 })
+  const pageSize = params.pageSiz
+  const data = await getUsers({ page: page ?? 1, pageSize: pageSize ?? 5 })
+
+  console.log(data)
   
   return (
     <main className="flex-1 p-6 lg:p-10 overflow-y-auto bg-surface-bright">

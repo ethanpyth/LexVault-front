@@ -17,7 +17,7 @@ const navLinks = [
     isActive: false,
   },
   {
-    href: "audit",
+    href: "/admin/audits",
     label: "Journal d'audits",
     icon: HistoryOutlined,
     isActive: false,
