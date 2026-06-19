@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import { API_BASE_URL } from "../config";
 
 export async function getAuditPerPage({
@@ -13,6 +14,9 @@ export async function getAuditPerPage({
   period?: string,
   action?: string,
 }) {
+  const cookieStore = await cookies();
+
+  const TOKEN = cookieStore.get("access_token")?.value;
   const params = new URLSearchParams()
 
   params.set("page", page)
@@ -20,7 +24,7 @@ export async function getAuditPerPage({
 
   if (userId) params.set("userId", userId)
   if (period) params.set("period", period)
-  if (action) params.set("typeAction", userId)
+  if (action) params.set("typeAction", action)
 
   try {
     const response = await fetch(`${API_BASE_URL}/audit/page?${params.toString()}`, {
