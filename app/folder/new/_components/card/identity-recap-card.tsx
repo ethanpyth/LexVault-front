@@ -1,9 +1,10 @@
 'use client'
 
+import { redirect } from "next/navigation"
 import { useRecord } from "../../_context/record-context"
 
 export default function IdentityRecapCard() {
-  const { recordData, updateRecordData } = useRecord()
+  const { recordData } = useRecord()
   
   return (
     <div className="bg-surface-lowest border border-outline-variant overflow-hidden">
@@ -14,6 +15,7 @@ export default function IdentityRecapCard() {
         <button
           type="button"
           title="Bouton de modification"
+          onClick={() => redirect('/folder?identity')}
           className="text-blue-900 text-xs font-bold hover:underline"
         >
           Modifier
