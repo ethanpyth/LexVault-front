@@ -73,7 +73,7 @@ export interface FoldersData {
 export interface Folder {
     id: string,
     numeroCasier: string,
-    statut: "SUSPENDU" | "ARCHIVE" | "ACTIF",
+    statut: StatutFolder,
     dateCreation: string,
     createdAt: string,
     updatedAt: string,
@@ -102,7 +102,7 @@ export interface Audience {
   dateAudience: string,
   salle: string | null,
   jugeId: string,
-  statut: "EN_COURS" | "EN_ATTENTE" | "TERMINE",
+  statut: StatutAudience,
   createdAt: string,
   updatedAt: string,
   tribunalId: string,
@@ -152,10 +152,22 @@ export interface User {
   personne : Personne,
 }
 
+export enum StatutAudience {
+  EN_COURS = "En cours",
+  EN_ATTENTE = "En attente",
+  TERMINE = "Terminé"
+}
+
+export enum StatutFolder {
+  SUSPENDU = "Suspendu",
+  ARCHIVE = "Archivé",
+  ACTIF = "Actif"
+}
+
 export enum Role {
-  ADMIN,
-  GREFFIER,
-  JUGE,
-  PROCUREUR,
-  ACCUSE,
+  ADMIN = 'Admin',
+  GREFFIER = 'Greffier',
+  JUGE = 'Juge',
+  PROCUREUR = 'Procureur',
+  ACCUSE = 'Accusé',
 }

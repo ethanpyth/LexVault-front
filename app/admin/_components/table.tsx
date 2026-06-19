@@ -24,7 +24,8 @@ export type PaginationProps = {
   pageSize: number,
 }
 
-export default function Table({ pagination, users }: Readonly<{ pagination: PaginationProps, users: UserProps[]}>) {
+export default function Table({ pagination, users }: Readonly<{ pagination: PaginationProps, users: UserProps[] }>) {
+  console.log(pagination)
   const router = useRouter()
   const searchParams = useSearchParams()
 

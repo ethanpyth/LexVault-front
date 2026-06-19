@@ -30,7 +30,7 @@ export default async function Page({ searchParams }: Readonly<{ searchParams: Pr
   const params = await searchParams 
 
   const page = params.page
-  const pageSize = params.pageSiz
+  const pageSize = params.pageSize
   const data = await getUsers({ page: page ?? 1, pageSize: pageSize ?? 5 })
 
   console.log(data)
@@ -46,7 +46,7 @@ export default async function Page({ searchParams }: Readonly<{ searchParams: Pr
             Contrôlez les droits d&apos;accès des agents aux systèmes d&apos;information judiciaires sécurisés.
           </p>
         </div>
-        <Stat stats={ stats } />
+        <Stat stats={[{ label: "total des utilisateurs", number: data.meta.total, hints: ""}]} />
         <MainContentSection tableProps={{ meta: data.meta, users: data.data }}/>
         <DetailPanel />
       </div>

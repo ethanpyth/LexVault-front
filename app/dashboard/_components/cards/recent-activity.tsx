@@ -1,5 +1,9 @@
+'use client'
+
+import router from "next/router";
 import { ActivityItem } from "../items/activity";
 import { EditNoteOutlined, AssignmentTurnedInOutlined, WarningOutlined, VisibilityOutlined } from "@mui/icons-material";
+import { redirect } from "next/navigation";
 
 const activities = [
   {
@@ -43,6 +47,7 @@ export default function Traceability() {
         <h3 className="font-bold text-lg flex items-center gap-2">Flux de tracabilité</h3>
         <button 
           type="button"
+          onClick={() => redirect('/admin/audits')}
           className="text-xs text-primary font-bold uppercase hover:underline"
         >
             Voir tout l&apos;historique
