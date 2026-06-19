@@ -39,8 +39,8 @@ export default function Header() {
       </div>
       <div className="flex flex-1 justify-end gap-4 text-primary-container">
         <nav className="flex items-center gap-9">
-          {navLinks.map((navLink, index) => (
-            <NavLink key={index} href={navLink.href} isActive={navLink.isActive} label={navLink.label} />
+          {navLinks.map((navLink) => (
+            <NavLink key={navLink.label} href={navLink.href} isActive={navLink.isActive} label={navLink.label} />
           ))}
         </nav>
         <div className="flex gap-2">

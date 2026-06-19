@@ -3,9 +3,9 @@
 import { DownloadOutlined, PrintOutlined } from "@mui/icons-material"
 import Pagination from "../pagination"
 import TableRow from "../table-row"
-import { FoldersData } from "@/app/lib/folder/types"
+import { FoldersData } from "@/app/lib/types"
 
-export default async function Results({ result }: Readonly<{result: FoldersData}>) {
+export default async function Results({ result }: Readonly<{ result: FoldersData }>) {
 
   return (
     <div className="flex flex-col gap-4">
@@ -54,8 +54,8 @@ export default async function Results({ result }: Readonly<{result: FoldersData}
                 nom={folder.personne.nom}
                 birthday={folder.personne.dateNaissance?.toString() ?? ""}
                 nin={folder.personne.nin ?? ""}
-                updatedAt={folder.updatedAt.toString() ?? "" }
-                status={folder.statut.toString()} 
+                updatedAt={folder.updatedAt.toString() ?? ""}
+                status={folder.statut.toString()}
               />
             ))}
           </tbody>

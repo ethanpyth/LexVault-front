@@ -3,25 +3,25 @@ import NavLink from "./navLink";
 
 const navLinks = [
   {
-    href: "./dashboard",
+    href: "/dashboard",
     label: "Tableau de bord",
     icon: DashboardOutlined,
     isActive: false,
   },
   {
-    href: "./folder/search",
+    href: "/folder/search",
     label: "Recherche Dossier",
     icon: SearchOutlined,
     isActive: false,
   },
   {
-    href: "./folder/new",
+    href: "/folder/new",
     label: "Nouvel Enregistrement",
     icon: NoteAddOutlined,
     isActive: false,
   },
   {
-    href: "./history",
+    href: "/admin/audits",
     label: "Journal d'audit",
     icon: HistoryEduOutlined,
     isActive: false,
@@ -30,13 +30,13 @@ const navLinks = [
 
 const adminNavLinks = [
   {
-    href: "./admin/permissions",
+    href: "/admin/permissions",
     label: "Habilitations",
     icon: VerifiedUserOutlined,
     isActive: false,
   },
   {
-    href: "./admin/settings",
+    href: "/admin/settings",
     label: "Paramètres",
     icon: SettingsOutlined,
     isActive: false,

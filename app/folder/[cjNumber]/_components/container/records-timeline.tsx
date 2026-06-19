@@ -1,7 +1,6 @@
-import { Folder } from "@/app/lib/folder/types"
+import { Folder, StatutFolder } from "@/app/lib/types"
 import { CheckCircleOutlineOutlined, HistoryEduOutlined, LockClockOutlined, ReportProblemOutlined } from "@mui/icons-material"
 import TimelineItem from "../items/timeline-item"
-import { Key } from "react"
 
 export default function RecordsTimeline({ records }: Readonly<{ records: Folder }>) {
   return (
@@ -34,7 +33,7 @@ export default function RecordsTimeline({ records }: Readonly<{ records: Folder 
           <TimelineItem
             key={folder.id}
             status={records.statut}
-            icon={records.statut === "ACTIF" ? ReportProblemOutlined : records.statut === "ARCHIVE" ? CheckCircleOutlineOutlined : LockClockOutlined }
+            icon={records.statut === StatutFolder.ACTIF ? ReportProblemOutlined : records.statut === StatutFolder.ARCHIVE ? CheckCircleOutlineOutlined : LockClockOutlined}
             description={folder.description ?? ""}
             délit={folder.qualification}
             date={folder.dateInfraction}

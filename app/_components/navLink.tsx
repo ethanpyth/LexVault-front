@@ -7,7 +7,7 @@ type navLinkProps = {
   isActive: boolean
 }
 
-export default function NavLink({ navLink }: { navLink: navLinkProps }) {
+export default function NavLink({ navLink }: Readonly<{ navLink: navLinkProps }>) {
   const Icon = navLink.icon
   return(
     <a
