@@ -152,6 +152,31 @@ export interface User {
   personne : Personne,
 }
 
+export interface Audit {
+  id: string,
+  action: string,
+  entite: string,
+  ancienneValeur: string | null,
+  nouvelleValeur: string | null,
+  adresseIP: string,
+  dateAction: string,
+  createdAt: string,
+  updatedAt: string,
+  userId: string,
+  entiteId: string | null,
+  user: User,
+}
+
+export interface AuditData {
+  data: Audit[],
+  meta: {
+    page: string,
+    pageSize: string,
+    pageCount: string,
+    total: string,
+  }
+}
+
 export enum StatutAudience {
   EN_COURS = "En cours",
   EN_ATTENTE = "En attente",
