@@ -1,22 +1,18 @@
-import { SvgIconComponent } from "@mui/icons-material";
-
 type Activity = {
-  id: number;
+  id: string;
   label: string;
   type: string;
   description: string;
   timestamp: string;
-  icon: SvgIconComponent;
 }
 
 export function ActivityItem({ activity }: Readonly<{ activity: Activity }>) {
-  const Icon = activity.icon;
+
   return (
     <div className="flex gap-4">
       <div className="flex flex-col items-center">
         <div className="size-8 rounded-full bg-surface-container-low text-primary flex items-center justify-center border border-outline-variant shrink-0">
           <span className="material-symbol-outlined text-sm">
-            <Icon />
           </span>
         </div>
         <div className="w-px h-full bg-outline-variant mt-2"></div>

@@ -30,7 +30,7 @@ const navLinks = [
 
 const adminNavLinks = [
   {
-    href: "/admin/permissions",
+    href: "/admin",
     label: "Habilitations",
     icon: VerifiedUserOutlined,
     isActive: false,
