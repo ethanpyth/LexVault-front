@@ -46,7 +46,20 @@ export async function login(formData: FormData): Promise<void> {
 }
 
 export async function logout() {
-  const cookieStore = await cookies();
+  try {
+    const response = await fetch(`${API_BASE_URL}/auth/logout`, {
+      method: "POST",
+      headers: {
+        'Content-Type': "application/json",
+      }
+    })
+    if (response.ok) {
+      const cookieStore = await cookies();
+      cookieStore.delete("access_token");
+    }
 
-  cookieStore.delete("access_token")
+    redirect('/auth')
+  } catch (e) {
+    throw e
+  }
 }

@@ -32,5 +32,6 @@ export const config = {
     '/dashboard/:path*',
     '/folder/:path*',
     '/auth/:path*',
+    '/admin/:path*'
   ]
 }
